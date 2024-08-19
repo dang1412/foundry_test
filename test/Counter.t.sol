@@ -21,4 +21,29 @@ contract CounterTest is Test {
         counter.setNumber(x);
         assertEq(counter.number(), x);
     }
+
+    function test_CallContract() public {
+        address calleeAddress = 0x64192819Ac13Ef72bF6b5AE239AC672B43a9AF08;
+        (bool success, bytes memory data) = calleeAddress.call(
+            // abi.encodeWithSignature("checkThreshold(uint256)", 0)
+            // abi.encodeWithSignature("paused()")
+            abi.encodeWithSignature("depositCount()")
+        );
+
+        uint256 result = abi.decode(data, (uint256));
+
+        assertEq(result, 92277);
+    }
+
+// function submitWithdrawal(Transfer.Receipt calldata _receipt, Signature[] calldata _signatures) external virtual whenNotPaused returns (bool _locked) {
+//     return _submitWithdrawal(_receipt, _signatures);
+//   }
+    function test_AttackRonin() public {
+        address calleeAddress = 0x64192819Ac13Ef72bF6b5AE239AC672B43a9AF08;
+        (bool success, bytes memory data) = calleeAddress.call(
+            // abi.encodeWithSignature("checkThreshold(uint256)", 0)
+            // abi.encodeWithSignature("paused()")
+            abi.encodeWithSignature("depositCount()")
+        );
+    }
 }

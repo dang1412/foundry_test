@@ -64,3 +64,11 @@ $ forge --help
 $ anvil --help
 $ cast --help
 ```
+
+## Notes
+
+```sh
+forge test --match-contract TransferTest
+forge test --match-contract TransferTest --fork-url https://mainnet.chainnodes.org/e8fb0d68-2fe1-4b39-858a-6fdb821e91b2 --fork-block-number 20468678
+cast sig "getName((string,uint256))"
+```
